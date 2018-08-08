@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import {RouterModule,Routes} from '@angular/router'
 import {AppComponent} from './app.component'
-
+import {LandingComponentComponent} from "./landing-component/landing-component.component"
+import {AboutComponent} from "./about/about.component"
 const route:Routes=
 [
-  {path:"",component:AppComponent}
+  {path:"",component:LandingComponentComponent},
+  {
+    path:"About",component:AboutComponent
+  }
 ]
 @NgModule({
   imports: [

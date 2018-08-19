@@ -1,0 +1,27 @@
+<div class="card card-body">
+<h3>Video Idea</h3>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+   
+<div class="form-group">
+  <label for="title">Title</label>
+  <input type="text" class="form-control" formControlName="Title"[ngClass]="{'is-invalid':isSubmitted && this.registerForm.controls.Title.errors}" required>
+  <div *ngIf="isSubmitted && this.registerForm.controls.Title.errors">
+ 
+  <div class="invalid-feedback" *ngIf="this.registerForm.controls.Title.errors.required">Title is required.</div>
+</div>
+     
+</div>
+
+<div class="form-group">
+    <label for="details">Details</label>
+  <input type="text" class="form-control" formControlName="Details" [ngClass]="{'is-invalid':isSubmitted && this.registerForm.controls.Details.errors}" required>
+  <div *ngIf="isSubmitted && this.registerForm.controls.Details.errors">
+  
+    <div class="invalid-feedback" *ngIf="this.registerForm.controls.Details.errors.required">Details is required.</div>
+  </div>
+    
+  </div>
+
+<button type="submit" class="btn btn-primary">Add</button>
+</form>
+</div>

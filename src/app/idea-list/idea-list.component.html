@@ -1,0 +1,83 @@
+<form [formGroup]="VidjotIdeasForm">
+
+    <!-- <p  formControlName="Name"></p> -->
+  <div class="card card-body" formArrayName="vidjotArray" *ngFor="let item of VidjotIdeasForm.controls['vidjotArray'].controls;let i = index">
+   <div [formGroupName]="i">
+
+    <!-- <p fromControlName="Date"></p>
+    <p  formControlName="Title"></p>
+    <p formControlName="Details"></p>  -->
+<div class="form-group">
+    <input type="text" class="form-control" readonly formControlName="Date" style="border:0%">
+    <input type="text" class="form-control" readonly formControlName="Title" style="border:0%">
+    <input type="text" class="form-control" readonly formControlName="Details" style="border:0%">
+    
+  </div>
+  <!-- <div>{{item.value.Date}}</div> -->
+  <button class="btn btn-dark btn-block mb-2"  (click)="displayDialogVidjot=true;EditVidjotIdea(item.value.Id)">EditIdea</button>
+ 
+  <button class="btn btn-danger btn-block"  (click)="DeleteIdea(item.value.Id)">Delete</button>
+ 
+  </div>
+  <!-- href="EditIdea/{{item.value.Id}}" -->
+</div>
+<p-dialog [contentStyle]="{'background-color':'green'}"   [(visible)]="displayDialogVidjot">
+  
+  <p-header>
+<span class="ml-5">Edit Idea</span> 
+
+  </p-header>
+    <form [formGroup]="registerForm" >
+        
+     <div class="form-group">
+       <label for="title">Title</label>
+       <input type="text" class="form-control" formControlName="Title"[ngClass]="{'is-invalid':isSubmitted && this.registerForm.controls.Title.errors}" required>
+       <div *ngIf="isSubmitted && this.registerForm.controls.Title.errors">
+      
+       <div class="invalid-feedback" *ngIf="this.registerForm.controls.Title.errors.required">Title is required.</div>
+     </div>
+          
+     </div>
+     
+     <div class="form-group">
+         <label for="details">Details</label>
+       <input type="text" class="form-control" formControlName="Details" [ngClass]="{'is-invalid':isSubmitted && this.registerForm.controls.Details.errors}" required>
+       <div *ngIf="isSubmitted && this.registerForm.controls.Details.errors">
+       
+         <div class="invalid-feedback" *ngIf="this.registerForm.controls.Details.errors.required">Details is required.</div>
+       </div>
+         
+       </div>
+     <div class="row">
+<div class="col-md-12 col-sm-12 col-lg-12 offset-md-1 offset-lg-1 offset-sm-1">
+ <button type="button" class="btn btn-primary" (click)="UpdateVidjotIdea()">Update</button>
+     <button type="button" class="btn btn-primary"(click)="displayDialogVidjot=false">Cancel</button>
+     </div>
+     </div>
+       </form>
+    </p-dialog>
+
+</form>
+<!-- <p>
+  comp2 works!
+</p>
+<form class="container" [formGroup]="Form" (ngSubmit)="onSubmit(Form.value)">
+<input type="text" name="firstName" placeholder="firstname" formControlName="firstName">
+<input type="text" name="lastname" placeholder="lastname" formControlName="lastname">
+<input type="submit" value="Add">
+</form>
+
+<form [formGroup]="NewForm" (ngSubmit)="dynamicgeneration()">
+
+  <!-- <p formControlName="Title"></p> -->
+  <!-- *ngFor="let obj of NewForm.get('manipulation').controls;let i = index">  -->
+<!-- *ngFor="let obj of manipulation.controls;let i = index"> -->
+
+<!-- <div formArrayName="manipulation" 
+
+*ngFor="let obj of NewForm.controls['manipulation'];let i = index">
+
+<div> <p >{{i}}</p></div> 
+</div>
+  <input type="submit" name="submit" value="GenerateTitle">
+</form>  -->

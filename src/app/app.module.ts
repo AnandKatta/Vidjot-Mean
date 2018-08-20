@@ -13,7 +13,10 @@ import { HttpClientModule} from  '@angular/common/http';
 import {VidjotService} from "./vidjot.service";
 import { IdeaListComponent } from './idea-list/idea-list.component';
 import {DialogModule} from 'primeng/dialog';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { UsersService } from "./users.service"
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +24,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
     MenuComponent,
     AboutComponent,
     AddIdeaComponent,
-    IdeaListComponent
+    IdeaListComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
     DialogModule,
     BrowserAnimationsModule
   ],
-  providers: [VidjotService],
+  providers: [VidjotService,UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

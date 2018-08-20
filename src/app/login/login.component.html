@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card card-body">
+        <img class="logo" src="assets/img/LoginRed.jpg">
+        <h3 class="text-center">Account Login </h3>
+          <form #loginForm=ngForm (ngSubmit)="onSubmitForm()">
+            <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="emails" [(ngModel)]="email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">password</label>
+            <input type="password" class="form-control" name="passwords"
+            [(ngModel)]="password" required>
+          </div>
+          <input type="submit" class="btn btn-primary"  [disabled]="!loginForm.form.valid" value="Submit">
+          </form>
+       
+    
+    </div>
+  </div>
+</div>
